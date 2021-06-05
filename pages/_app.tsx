@@ -22,7 +22,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <>
             <Head>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOQckY7pg5CrPwm1b6R_WRCMIOGCJDi4"></script>
+                <script
+                    src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}`}
+                ></script>
             </Head>
             <GlobalContext.Provider
                 value={{
