@@ -3,6 +3,8 @@ import { AppButton } from "./AppButton";
 
 interface Props {
     title: string;
+    disableButton: boolean;
+    onSubmitForm: () => void;
 }
 
 export const FormLayout: React.FC<Props> = (props) => {
@@ -16,7 +18,11 @@ export const FormLayout: React.FC<Props> = (props) => {
                 {props.children}
             </div>
 
-            <AppButton label="Next" disabled />
+            <AppButton
+                onSubmit={props.onSubmitForm}
+                label="Next"
+                disabled={props.disableButton}
+            />
         </>
     );
 };

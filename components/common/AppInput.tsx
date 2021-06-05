@@ -1,6 +1,8 @@
 interface Props {
     label: string;
     type?: "email" | "password" | "text" | "tel";
+    value: string;
+    onChange: (val: string) => void;
 }
 
 export const AppInput: React.FC<Props> = (props) => {
@@ -11,6 +13,8 @@ export const AppInput: React.FC<Props> = (props) => {
             <input
                 className="rounded border-2 border-medium-grey py-2 px-3 outline-none focus:border-pry-color"
                 type={props.type || "text"}
+                value={props.value}
+                onChange={(ev) => props.onChange(ev.target.value)}
             />
         </div>
     );
