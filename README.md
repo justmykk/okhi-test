@@ -12,7 +12,7 @@ Install the dependencies and devDependencies and start the server.
 cd software-engineer-takehome-project-michael-olawale
 yarn
 touch config.next.js
-cp example.config.next.js
+cp example.config.next.js config.next.js
 yarn dev
 ```
 
