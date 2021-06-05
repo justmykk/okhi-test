@@ -1,18 +1,36 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/global-context";
+import Swal from "sweetalert2";
 
 export const Landing = () => {
     const store = useContext(GlobalContext);
 
     const onSubmit = () => {
-        store.setCurrentPage("address");
-        // navigator.geolocation.getCurrentPosition(
-        //     (position) => {
-        //         console.log(position);
-        //     },
-        //     (err) => console.log(err),
-        //     {enableHighAccuracy: true}
-        // );
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setTimeout(() => {
+                    store.setCurrentPage("map");
+                }, 3000);
+
+                const coords = position.coords;
+                store.setLocation({
+                    lat: coords.latitude,
+                    lng: coords.longitude,
+                });
+                store.setAccuracy(coords.accuracy);
+                store.setCurrentPage("map");
+            },
+            (err) => {
+                Swal.fire({
+                    text: "Please ensure location permissions are on",
+                    icon: "info",
+                    customClass: {
+                        closeButton: "bg-pry-color",
+                    },
+                });
+            },
+            { enableHighAccuracy: true }
+        );
     };
 
     return (

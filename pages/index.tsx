@@ -14,7 +14,11 @@ const Index = () => {
         <div className="flex flex-col h-screen">
             <NavBar />
 
-            <div className="flex px-5 flex-1 flex-col">
+            <div
+                className={`flex ${
+                    store.currentPage !== "map" && "px-5"
+                } flex-1 flex-col`}
+            >
                 {store.currentPage === "landing" && <Landing />}
                 {store.currentPage === "map" && <Map />}
                 {store.currentPage === "address" && <AddressDetails />}

@@ -1,11 +1,15 @@
 import { createContext } from "react";
-import { FormType, PageType } from "../types";
+import { FormType, LocationType, PageType } from "../types";
 
 interface ContextInterface {
     currentPage: PageType;
     form: FormType;
     setCurrentPage: (arg: PageType) => void;
     setForm: (arg: FormType) => void;
+    location: LocationType;
+    setLocation: (arg: LocationType) => void;
+    accuracy: number;
+    setAccuracy: (arg: number) => void;
 }
 
 export const defaultValue: ContextInterface = {
@@ -18,8 +22,12 @@ export const defaultValue: ContextInterface = {
         streetName: "",
     },
     currentPage: "landing",
-    setForm: (arg) => {},
-    setCurrentPage: (arg) => {},
+    location: { lat: 6.465422, lng: 3.406448 },
+    accuracy: 200,
+    setForm: () => {},
+    setCurrentPage: () => {},
+    setLocation: () => {},
+    setAccuracy: () => {},
 };
 
 export const GlobalContext = createContext(defaultValue);
